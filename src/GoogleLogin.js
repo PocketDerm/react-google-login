@@ -63,9 +63,13 @@ class GoogleLogin extends Component {
     }
     if (!this.state.disabled) {
       const auth2 = window.gapi.auth2.getAuthInstance()
-      const { onSuccess, onRequest, onFailure, prompt, responseType } = this.props
+      const { onSuccess, onRequest, onFailure, prompt, responseType, redirectUri, fetchBasicProfile, scope } = this.props
       const options = {
-        prompt
+        response_type: responseType,
+        redirect_uri: redirectUri,
+        fetch_basic_profile: fetchBasicProfile,
+        prompt,
+        scope
       }
       onRequest()
       if (responseType === 'code') {
